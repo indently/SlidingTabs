@@ -6,11 +6,25 @@
 //
 
 import SwiftUI
+import SlidingTabView
 
 struct ContentView: View {
+    @State private var tabIndex = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            SlidingTabView(selection: $tabIndex, tabs: ["Home", "Friends", "Settings"], animation: .easeInOut)
+            Spacer()
+            
+            if tabIndex == 0 {
+                TabAView()
+            } else if tabIndex == 1 {
+                TabBView()
+            } else if tabIndex == 2 {
+                TabCView()
+            }
+            Spacer()
+        }
     }
 }
 
